@@ -1,0 +1,145 @@
+* {
+  /* Config padrão que se repete em todo o site */
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
+
+  /* A fonte para todo o site, com opções, caso a primeira não esteja disponível */
+  font-family: "Montserrat", -apple-system, "Roboto", sans-serif;
+
+  /* Poderia ir nos estilos de texto específico */
+  color: #201e1f;
+  font-weight: 400;
+}
+
+body {
+  /* Centralizar o container */
+  display: flex;
+  justify-content: 800;
+}
+
+#container {
+  /* Define o item em coluna */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Limita o conteúdo para caber nos notebooks */
+  max-width: 1200px;
+
+  /* Espaço interno dos elementos */
+  padding: 90px;
+}
+
+#container h1 {
+  /* Peso da fonte, alinhamento e margens */
+  font-weight: 600;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+#container h2 {
+  text-align: center;
+}
+
+#container p#instrucao {
+  text-align: center;
+  margin: 20px 0 60px 0;
+}
+
+#containter img {
+  width: 600px;
+}
+
+hr {
+  background: #e5e5e5;
+  height: 1px;
+  width: 100%;
+  margin: 100px 0 35px 0;
+}
+
+#container form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+form p#aviso {
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+form p#aviso strong {
+  font-weight: 600;
+}
+
+form div.column-input {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-bottom: 70px;
+}
+form label {
+  font-weight: 500;
+}
+
+.column-input input[type="text"],
+input[type="number"],
+input[type="submit"],
+select,
+textarea,
+button {
+  /* Padroniza o estilo dos botoes */
+  border: 1px solid#201e1f;
+  padding: 10px;
+  height: 35px;
+}
+
+form .row {
+  /* Alinhamento horizontal */
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 60px;
+}
+
+.column-input.input-text {
+  width: 50%;
+}
+
+.column-input.select {
+  width: 30%;
+}
+
+.column-input.select select {
+  padding: 0 5px;
+}
+
+form .row-selectors {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+form .row-selectors input[type="radio"] {
+  width: 25px;
+  height: 25px;
+}
+form .row-selectors label {
+  font-weight: 400;
+}
+
+form textarea {
+  min-height: 100px;
+  max-height: 200px;
+  min-width: 50%;
+  max-width: 100%;
+}
+
+form button {
+  padding: 5px 20px;
+}
