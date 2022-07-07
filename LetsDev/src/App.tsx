@@ -1,41 +1,155 @@
-import React from "react"
+import React, { FormEvent } from "react"
+import "./styles.css"
+import Logo from "./imagens/lets-dev.png"
 import Titulo from "./componentes/Titulo"
 
 //No react a palavra class é usado para criar classe e não para passar a classe dos elementos html, portanto não usaremos só class em html e sim className
-//No React usaremos as propriedades em camelcase. ex: onClick, className
+//No React usaremos as propriedades em camelcase. ex: onClick, className, htmlFor
 class App2 extends React.Component {}
 
 function MeuSite() {
-  //Quando começa com letra maiuscula deixa de ser uma função, e passa a ser um componente, ele pode retornar HTML
+  const cancelar = (event: FormEvent) => {
+    // Evita o redirecionamento padrão para outra tela e manda um alert
+    event.preventDefault()
+    alert("Cancelando...")
+  }
+  function tagPorNome(nomeTag: string, isRadioButton: boolean = false) {
+    const tag = document.getElementsByName(nomeTag)
 
-  // var novoTitulo: string = "Olá mundo" //Pra passar o conteúdo desta string pro codigo HTML, eu preciso por entre chaves
-
-  // function minhaFuncao() {
-  //   alert("Opaaa!!!")
-  // }
-
-  const novaFuncao = (label: string) => {
-    alert(label)
+    if (isRadioButton) {
+      for (let pos = 0; pos < tag.length; pos++) {
+        if (tag[pos].checked) return tag[pos]
+      }
+    } else return tag[0]
   }
 
-  function MeuBotao(props: any) {
-    // const label = props.label or
-    const { label } = props //desestruturação
+  function enviarFormulario(event: FormEvent) {
+    event.preventDefault()
 
-    return (
-      <button className="meu-botao" onClick={() => novaFuncao(label)}>
-        {label}
-      </button>
-    )
+    const nome = tagPorNome("nome")?.value
+    const idade = tagPorNome("idade")?.value
+    const ocupacao = tagPorNome("ocupacao")?.value
+    const areaPreferencia = tagPorNome("area-preferencia", true)?.value
+    const curriculo = tagPorNome("curriculo")
+    const descricaoPerfil = tagPorNome("descricao-perfil")?.value
+    const receberEmail = tagPorNome("receber-email")?.value
+
+    const mensagem = `${nome}, tem ${idade} anos e atualmente é ${ocupacao}. Se ingressar no mundo do desenvolvimento, tem preferência por atuar como ${areaPreferencia}.
+
+       Em sua descrição de perfil consta: "${descricaoPerfil}".
+
+       Deseja receber e-mail: ${receberEmail ? "Sim" : "Não"}
+       Currículo: ${curriculo ? curriculo.files[0].name : "Não informado"}
+       `
+
+    alert(mensagem)
   }
 
   return (
-    <div>
-      {/* Eles sendo componentes eles podem ser declarados como se fosem uma tag HTML */}
-      <Titulo titulo="Home" />
-      <Titulo titulo="Blog" />
-      <MeuBotao label="Botão 1" />
-      <MeuBotao label="Botão 2" />
+    <div id="container">
+      <Titulo titulo="Formulário 2ª Edição" />
+      <h2>
+        Seja bem-vindo(a) ao primeiro desafio da sua jornada de aprendizado!
+      </h2>
+      <p id="instrucao">
+        Preencha corretamente os campos abaixo para ingressar nessa SUPER
+        JORNADA com o tim e Paipe!
+      </p>
+
+      <img src={Logo} alt="Imagem Let's Dev" />
+      <hr />
+
+      {/* <!--Aqui começa os itens agrupados em coluna--> */}
+      <form onSubmit={enviarFormulario}>
+        <p id="aviso">
+          <strong>ATENÇÃO:</strong> os campos contendo o asterisco (*) são de
+          preenchimento obrigatório!
+        </p>
+        {/* <!-- Aqui começa os inputs de digitação --> */}
+        <div className="row">
+          <div className="column-input input-text">
+            <label>Nome completo:</label>
+            <input
+              type="text"
+              name="nome"
+              placeholder="Digite seu nome aqui"
+              required
+            />
+          </div>
+          <div className="column-input">
+            <label>Idade:</label>
+            <input type="number" name="idade" placeholder="Digite sua idade" />
+          </div>
+        </div>
+        {/* <!-- Aqui começa os inputs de seleção --> */}
+        <div className="row">
+          <div className="column-input select">
+            <label>Ocupação:</label>
+            <select name="ocupacao">
+              <option>Selecione sua ocupação</option>
+              <option>Trabalhador CLT</option>
+              <option>Trabalhador PJ</option>
+              <option>Autônomo</option>
+              <option>Outros</option>
+            </select>
+          </div>
+
+          <div className="column-input">
+            <label>Área de preferência:</label>
+
+            <div className="row" style={{ gap: "25px" }}>
+              <div className="row-selectors">
+                <input
+                  type="radio"
+                  id="front"
+                  name="area-preferencia"
+                  value="Front-end"
+                  checked
+                />
+                <label htmlFor="front">Front-end</label>
+                <input
+                  type="radio"
+                  id="back"
+                  name="area-preferencia"
+                  value="Back-end"
+                />
+                <label htmlFor="back">Back-end</label>
+                <input
+                  type="radio"
+                  id="full"
+                  name="area-preferencia"
+                  value="Full-stack"
+                />
+                <label htmlFor="full">Full stack</label>
+              </div>
+            </div>
+          </div>
+          {/* <!-- Aqui começa os botões, textarea e checkbox --> */}
+        </div>
+        <div className="column-input">
+          <label>Anexar currículo:</label>
+          <input type="file" name="curriculo" />
+        </div>
+        <div className="column-input" style={{ marginBottom: "30px" }}>
+          <label>Descrição do perfil do candidato:</label>
+          <textarea
+            name="descricao-perfil"
+            placeholder="Nos fale um pouco sobre o seu perfil pessoal e profissional..."
+          ></textarea>
+        </div>
+        <div className="column-input" style={{ marginBottom: "115px" }}>
+          <div className="row-selectors">
+            <input type="checkbox" name="receber-email" id="receber-email" />
+            <label htmlFor="receber-email">
+              Desejo receber notificações sobre as vagas por e-mail
+            </label>
+          </div>
+        </div>
+        <div className="row" style={{ justifyContent: "space-between" }}>
+          <button onClick={cancelar}>Cancelar</button>
+          <input type="submit" value="Enviar" />
+        </div>
+      </form>
     </div>
   )
 }
