@@ -5,6 +5,7 @@ import Home from "./home/home";
 import FormBasico  from "./form-basico/form-basico";
 import FormCompleto  from "./form-completo/form-completo";
 import Promisses from "./chamadas-api/promisse";
+import SobrePaipers from "./sobre-paipers/sobre-paipers";
 
 export {AsyncAwait}
 export {Callback}
@@ -13,3 +14,4 @@ export {Home}
 export {FormBasico}
 export {FormCompleto}
 export {Promisses}
+export {SobrePaipers}

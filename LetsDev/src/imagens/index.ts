@@ -9,3 +9,4 @@ export {Foto}
 export {Logo}
 export {LogoLetsDev}
 export {LogoPaipe}
+export * from "./contato"

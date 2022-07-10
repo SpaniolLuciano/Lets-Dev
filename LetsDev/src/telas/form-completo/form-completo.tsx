@@ -9,6 +9,7 @@ import {
   RowSelectors,
   InputButton,
   Footer,
+  Header,
 } from "../../componentes"
 
 // import { Container } from './styles';
@@ -46,6 +47,7 @@ const FormCompleto: React.FC = () => {
 
   return (
     <>
+      <Header />
       <s.Image src={Banner} alt="Imagem Let's Dev" />
       <s.Container>
         <Titulo titulo="Formulário 2ª Edição" />

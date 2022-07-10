@@ -109,7 +109,7 @@ const Home = () => {
               />
               <InputButton
                 type="submit"
-                value="Ver perfil"
+                value="GitHub"
                 onClick={() => {
                   //Aqui vai o seu perfil do GitHub
                   window.open("https://github.com/SpaniolLuciano", "_blank")
