@@ -1,4 +1,4 @@
-import Logo from './lets0dev.png'
-
-//TODO Parei na aula 4 - parte 1 54:00
+import Banner from './banner-lets-dev.png'
+import Logo from './lets-dev.png'
+export {Banner}
 export {Logo}
