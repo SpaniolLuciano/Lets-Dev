@@ -16,7 +16,7 @@ const AsyncAwait: React.FC = () => {
 
   return (
     <div>
-      <img src={minhaFotoDePerfil} alt="Imagem Let's Dev" />
+      <img src={minhaFotoDePerfil} alt="Foto Luciano Spaniol" />
     </div>
   )
 }

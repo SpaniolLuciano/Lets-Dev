@@ -105,6 +105,7 @@ const Home = () => {
                     "_blank"
                   )
                 }}
+                title="Vai para o perfil do Linkedin"
               />
               <InputButton
                 type="submit"
@@ -113,6 +114,7 @@ const Home = () => {
                   //Aqui vai o seu perfil do GitHub
                   window.open("https://github.com/SpaniolLuciano", "_blank")
                 }}
+                title="Vai para o perfil do GitHub"
               />
             </s.ButtonGroup>
           </s.Column>
