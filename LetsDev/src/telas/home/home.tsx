@@ -6,8 +6,7 @@ import {
   Card,
   InputButton,
 } from "../../componentes"
-import { Logo } from "../../imagens"
-import { Foto } from "../../imagens"
+import { Apis, Logo, FirstSteps, Foto, NewForm } from "../../imagens"
 import { useContext } from "react"
 import { MyContext } from "../../contexto"
 
@@ -24,6 +23,7 @@ const Home = () => {
           formulário feito na aula de Introdução ao HTML e CSS.
         </p>
       ),
+      imagem: FirstSteps,
     },
     {
       titulo: "Formulário 2.0",
@@ -34,18 +34,21 @@ const Home = () => {
           formulário funcional e agora com React JS + HTML + CSS.
         </p>
       ),
+      imagem: NewForm,
     },
     {
       titulo: "Consumindo API's",
       link: "/consumindo-apis",
       descricao:
         "Brincando com a API viaCEP, informando um CEP, salvando os valores digitados no estado e mostrando os dados na tela.",
+      imagem: Apis,
     },
     {
       titulo: "A PAIPE e os Paipers",
       link: "/sobre-paipers",
       descricao:
         "Uma página bônus de presente para deixar o seu projeto ainda mais completo. E de quebra ficar por dentro do que acontece na Paipe.",
+      imagem: Logo,
     },
   ]
 
@@ -74,6 +77,7 @@ const Home = () => {
               titulo={card.titulo}
               link={card.link}
               descricao={card.descricao}
+              imagem={card.imagem}
             />
           ))}
         </s.GroupCards>
